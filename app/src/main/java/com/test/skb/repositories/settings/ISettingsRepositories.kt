@@ -14,13 +14,13 @@ interface ISettingsRepositories {
 
    fun getToken(): String
 
-   fun addRepoToSaved(owner: String, repoName: String)
+   fun addRepoToSaved(owner: String?, repoName: String?)
 
-   fun isRepoOnSaved(owner: String, repoName: String): Boolean
+   fun isRepoOnSaved(owner: String?, repoName: String?): Boolean
 
    fun getSavedRepo(): MutableSet<String>?
 
-   fun removeRepoOnSaved(owner: String, repoName: String)
+   fun removeRepoOnSaved(owner: String?, repoName: String?)
 
    fun clearSaved()
 

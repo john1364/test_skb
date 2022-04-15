@@ -21,6 +21,13 @@ import moxy.presenter.ProvidePresenter
 
 class DetailsFragment : MvpAppCompatFragment(), IDetailsMvpView {
 
+   companion object {
+      const val POS = "pos"
+      const val SAVED = "saved"
+      const val IMG_HEIGHT = 150
+      const val IMG_WIDTH = 150
+   }
+
    @InjectPresenter
    lateinit var presenter: DetailsPresenter
    private var binding: ViewDataBinding? = null
@@ -28,9 +35,9 @@ class DetailsFragment : MvpAppCompatFragment(), IDetailsMvpView {
 
    @ProvidePresenter
    fun provide(): DetailsPresenter {
-      val pos = arguments?.getInt("pos")!!
-      val saved = arguments?.getBoolean("saved")!!
-      return DetailsPresenter(pos, saved)
+      val pos = arguments?.getInt(POS)!!
+      val saved = arguments?.getBoolean(SAVED)
+      return DetailsPresenter(pos, saved ?: false)
    }
 
    override fun onCreateView(
@@ -63,7 +70,7 @@ class DetailsFragment : MvpAppCompatFragment(), IDetailsMvpView {
       this.binding!!.setVariable(BR.model, model)
       Glide.with(this)
          .load(model.authorImg)
-         .override(150, 150)
+         .override(IMG_WIDTH, IMG_HEIGHT)
          .into(this.binding!!.root.findViewById(R.id.imageView2))
    }
 

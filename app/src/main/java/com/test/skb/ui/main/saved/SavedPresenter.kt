@@ -71,4 +71,8 @@ class SavedPresenter : MvpPresenter<ISavedMvpView>() {
          }
    }
 
+   override fun onDestroy() {
+      super.onDestroy()
+      this.disposable.clear()
+   }
 }

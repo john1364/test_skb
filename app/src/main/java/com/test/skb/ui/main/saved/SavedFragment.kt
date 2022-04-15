@@ -66,11 +66,11 @@ class SavedFragment : MvpAppCompatFragment(), ISavedMvpView {
    override fun data(newData: List<RepoModel>) {
       this.animator?.displayedChild =
          if (newData.isEmpty()) {
-            2
+            TypeAnimator.EMPTY.pos
          } else {
-            1
+            TypeAnimator.LIST.pos
          }
-      this.adapter?.data(newData, true)
+      this.adapter?.addData(newData, true)
    }
 
    override fun onPause() {

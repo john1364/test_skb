@@ -13,7 +13,6 @@ class CacheRepositories @Inject constructor() : ICacheRepositories {
    }
 
    private var user: User? = null
-
    private var total: Int? = null
    private var page = 1
    private val items: ArrayList<Repo> = ArrayList()

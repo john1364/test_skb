@@ -31,12 +31,12 @@ class DetailsInteractor {
    }
 
    fun isRepoSaved(): Boolean {
-      return this.settingsRepositories.isRepoOnSaved(this.repo!!.owner!!.login!!, this.repo!!.name!!)
+      return this.settingsRepositories.isRepoOnSaved(this.repo?.owner?.login, this.repo?.name)
    }
 
    fun star(): Boolean {
-      val owner = this.repo!!.owner?.login!!
-      val repoName = this.repo!!.name!!
+      val owner = this.repo?.owner?.login
+      val repoName = this.repo?.name
       val saved = isRepoSaved()
       if (isRepoSaved()) {
          this.settingsRepositories.removeRepoOnSaved(owner, repoName)

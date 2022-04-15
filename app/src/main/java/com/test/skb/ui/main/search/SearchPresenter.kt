@@ -4,8 +4,6 @@ import android.util.Log
 import com.test.skb.Screens
 import com.test.skb.dagger.ComponentManager
 import com.test.skb.interactors.SearchInteractor
-import com.test.skb.repositories.cache.ICacheRepositories
-import com.test.skb.repositories.server.IServerRepositories
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -22,13 +20,7 @@ class SearchPresenter : MvpPresenter<ISearchMvpView>() {
    }
 
    @Inject
-   lateinit var serverRepositories: IServerRepositories
-
-   @Inject
    lateinit var router: Router
-
-   @Inject
-   lateinit var cacheRepositories: ICacheRepositories
 
    private val disposable: CompositeDisposable = CompositeDisposable()
    private val interactor = SearchInteractor()

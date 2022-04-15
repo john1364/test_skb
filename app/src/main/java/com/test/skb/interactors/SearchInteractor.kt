@@ -29,18 +29,18 @@ class SearchInteractor {
       return this.serverRepositories.searchRepo(text, this.cacheRepositories.getPage())
          .map { searchRepo ->
             val items = mutableListOf<RepoModel>()
-            this.cacheRepositories.addData(searchRepo.total_count ?: 0, searchRepo.items)
+            this.cacheRepositories.addData(searchRepo.totalCount, searchRepo.items)
             for (item in searchRepo.items) {
                items.add(
                   RepoModel()
                      .apply {
-                        item.name?.also { name = it }
-                        item.owner?.login?.also { author = it }
-                        item.owner?.avatar_url?.also { authorImg = it }
-                        item.description?.also { description = it }
-                        item.created_at?.also { createdBy = it.toString() }
+                        item.name.also { name = it }
+                        item.owner.login.also { author = it }
+                        item.owner.avatarUrl.also { authorImg = it }
+                        item.description.also { description = it }
+                        item.createdAt.also { createdBy = it.toString() }
                         fork = item.forks
-                        star = item.stargazers_count
+                        star = item.stargazersCount
                      }
                )
             }

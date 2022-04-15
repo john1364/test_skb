@@ -14,7 +14,7 @@ class Auth : BaseObservable(){
       }
 
    @get:Bindable
-   var token: String = "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"
+   var token: String = ""
       set(value) {
          field = value
          notifyPropertyChanged(BR.token)

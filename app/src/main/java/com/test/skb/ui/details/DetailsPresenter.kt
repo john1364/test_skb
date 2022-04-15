@@ -31,13 +31,13 @@ class DetailsPresenter(private val pos: Int, saved: Boolean) : MvpPresenter<IDet
       super.onFirstViewAttach()
       viewState.setBinding(
          RepoModel().also { model ->
-            repo.name?.also { model.name = it }
-            repo.owner?.login?.also { model.author = it }
-            repo.owner?.avatar_url?.also { model.authorImg = it }
-            repo.description?.also { model.description = it }
-            repo.created_at?.also { model.createdBy = it.toString() }
+            repo.name.also { model.name = it }
+            repo.owner.login.also { model.author = it }
+            repo.owner.avatarUrl.also { model.authorImg = it }
+            repo.description.also { model.description = it }
+            repo.createdAt.also { model.createdBy = it.toString() }
             model.fork = repo.forks
-            model.star = repo.stargazers_count
+            model.star = repo.stargazersCount
          }
       )
       viewState.setStarImg(this.interactor.isRepoSaved())

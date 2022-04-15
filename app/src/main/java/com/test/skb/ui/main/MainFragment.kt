@@ -1,8 +1,9 @@
 package com.test.skb.ui.main
 
 import android.os.Bundle
-import android.view.*
-import android.view.View.GONE
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -40,8 +41,13 @@ class MainFragment : MvpAppCompatFragment(), IMainMvpView {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
-      val toolbar: Toolbar = this.binding!!.root.findViewById(R.id.toolbar)
-      toolbar.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener {
+      toolbar()
+      tab()
+   }
+
+   private fun toolbar() {
+      val toolbar: Toolbar? = this.binding?.root?.findViewById(R.id.toolbar)
+      toolbar?.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener {
          when (it.itemId){
             R.id.clearSaved -> {
                this.presenter.clearSaved()
@@ -52,7 +58,9 @@ class MainFragment : MvpAppCompatFragment(), IMainMvpView {
          }
          return@OnMenuItemClickListener false
       })
+   }
 
+   private fun tab() {
       this.viewPager2 = this.binding?.root?.findViewById(R.id.viewPager2)
       this.viewPager2?.apply {
          offscreenPageLimit = 2
@@ -67,17 +75,17 @@ class MainFragment : MvpAppCompatFragment(), IMainMvpView {
       this.tabLayout = this.binding?.root?.findViewById(R.id.tabLayout)
       if (!userSignIn) {
          this.tabLayout?.removeTabAt(1)
-         this.tabLayout?.visibility = GONE
+         this.tabLayout?.visibility = View.GONE
       } else {
          TabLayoutMediator(
             tabLayout!!, viewPager2!!
          ) { tab: TabLayout.Tab, position: Int ->
             when (position) {
                0 -> {
-                  tab.text = "Поиск"
+                  tab.text = getString(R.string.tab_search)
                }
                else -> {
-                  tab.text = "Сохраненное"
+                  tab.text = getString(R.string.tab_saved)
                }
             }
          }.attach()

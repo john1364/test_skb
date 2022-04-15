@@ -17,6 +17,11 @@ import moxy.presenter.InjectPresenter
 
 class AuthFragment : MvpAppCompatFragment(), IAuthMvpView {
 
+   companion object {
+      const val CREATE_TOKEN_URL =
+         "https://github.com/settings/tokens/new?description=test%20app%20token"
+   }
+
    @InjectPresenter
    lateinit var presenter: AuthPresenter
    private var binding: ViewDataBinding? = null
@@ -25,14 +30,14 @@ class AuthFragment : MvpAppCompatFragment(), IAuthMvpView {
       inflater: LayoutInflater,
       container: ViewGroup?,
       savedInstanceState: Bundle?
-   ): View {
+   ): View? {
       this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_auth, container, false)
-      return this.binding!!.root
+      return this.binding?.root
    }
 
    override fun setBinding(authData: Auth) {
-      this.binding!!.setVariable(BR.presenter, this.presenter)
-      this.binding!!.setVariable(BR.auth, authData)
+      this.binding?.setVariable(BR.presenter, this.presenter)
+      this.binding?.setVariable(BR.auth, authData)
    }
 
    override fun showError(msg: String) {
@@ -48,7 +53,7 @@ class AuthFragment : MvpAppCompatFragment(), IAuthMvpView {
          .build()
          .launchUrl(
             requireActivity(),
-            Uri.parse("https://github.com/settings/tokens/new?description=test%20app%20token")
+            Uri.parse(CREATE_TOKEN_URL)
          )
    }
 }

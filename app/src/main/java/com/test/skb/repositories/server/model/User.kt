@@ -1,38 +1,57 @@
 package com.test.skb.repositories.server.model
 
-class User {
+import com.google.gson.annotations.SerializedName
 
-   var login: String? = null
-   var id: Int? = null
-   var node_id: String? = null
-   var avatar_url: String? = null
-   var gravatar_id: String? = null
-   var url: String? = null
-   var html_url: String? = null
-   var followers_url: String? = null
-   var following_url: String? = null
-   var gists_url: String? = null
-   var starred_url: String? = null
-   var subscriptions_url: String? = null
-   var organizations_url: String? = null
-   var repos_url: String? = null
-   var events_url: String? = null
-   var received_events_url: String? = null
-   var type: String? = null
-   var site_admin: Boolean? = null
-   var name: String? = null
-   var company: String? = null
-   var blog: String? = null
-   var location: String? = null
-   var email: String? = null
-   var hireable: String? = null
-   var bio: String? = null
-   var twitter_username: String? = null
-   var public_repos: Int? = null
-   var public_gists: Int? = null
-   var followers: Int? = null
-   var following: Int? = null
-   var created_at: String? = null
-   var updated_at: String? = null
-
-}
+class User (
+   var login: String,
+   var id: Int,
+   @SerializedName("node_id")
+   var nodeId: String,
+   @SerializedName("avatar_url")
+   var avatarUrl: String,
+   @SerializedName("gravatar_id")
+   var gravatarId: String,
+   var url: String,
+   @SerializedName("html_url")
+   var htmlUrl: String,
+   @SerializedName("followers_url")
+   var followersUrl: String,
+   @SerializedName("following_url")
+   var followingUrl: String,
+   @SerializedName("gists_url")
+   var gistsUrl: String,
+   @SerializedName("starred_url")
+   var starredUrl: String,
+   @SerializedName("subscriptions_url")
+   var subscriptionsUrl: String,
+   @SerializedName("organizations_url")
+   var organizationsUrl: String,
+   @SerializedName("repos_url")
+   var reposUrl: String,
+   @SerializedName("events_url")
+   var eventsUrl: String,
+   @SerializedName("received_events_url")
+   var receivedEventsUrl: String,
+   var type: String,
+   @SerializedName("site_admin")
+   var siteAdmin: Boolean,
+   var name: String,
+   var company: String,
+   var blog: String,
+   var location: String,
+   var email: String,
+   var hireable: String,
+   var bio: String,
+   @SerializedName("twitter_username")
+   var twitterUsername: String,
+   @SerializedName("public_repos")
+   var publicRepos: Int,
+   @SerializedName("public_gists")
+   var publicGists: Int,
+   var followers: Int,
+   var following: Int,
+   @SerializedName("created_at")
+   var createdAt: String,
+   @SerializedName("updated_at")
+   var updatedAt: String
+)

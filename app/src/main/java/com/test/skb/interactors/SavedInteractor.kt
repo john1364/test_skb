@@ -43,7 +43,9 @@ class SavedInteractor {
 
    fun search(text: String): Observable<MutableList<RepoModel>> {
       return Observable.fromIterable(this.cacheRepositories.getReposSaved())
-         .filter { repo -> repo.name?.lowercase()?.contains(text.lowercase()) ?: false }
+         .filter { repo ->
+            repo.name.lowercase().contains(text.lowercase())
+         }
          .toList()
          .map { createRepoList(it) }
          .toObservable()
@@ -60,13 +62,13 @@ class SavedInteractor {
    private fun createRepoModel(item: Repo): RepoModel {
       return RepoModel()
          .apply {
-            item.name?.also { name = it }
-            item.owner?.login?.also { author = it }
-            item.owner?.avatar_url?.also { authorImg = it }
-            item.description?.also { description = it }
-            item.created_at?.also { createdBy = it.toString() }
+            item.name.also { name = it }
+            item.owner.login.also { author = it }
+            item.owner.avatarUrl.also { authorImg = it }
+            item.description.also { description = it }
+            item.createdAt.also { createdBy = it.toString() }
             fork = item.forks
-            star = item.stargazers_count
+            star = item.stargazersCount
          }
    }
 

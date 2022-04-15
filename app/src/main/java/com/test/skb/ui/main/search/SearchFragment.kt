@@ -26,6 +26,10 @@ import java.util.concurrent.TimeUnit
 
 class SearchFragment : MvpAppCompatFragment(), ISearchMvpView {
 
+   companion object {
+      const val TO_THE_END_OF_THE_LIST = 10
+   }
+
    @InjectPresenter
    lateinit var presenter: SearchPresenter
    private var binding: ViewDataBinding? = null
@@ -102,7 +106,7 @@ class SearchFragment : MvpAppCompatFragment(), ISearchMvpView {
             val totalItem: Int = recyclerView.layoutManager!!.itemCount
             val lastVisibleItem: Int =
                (recyclerView.layoutManager!! as LinearLayoutManager).findLastVisibleItemPosition()
-            if (totalItem - lastVisibleItem <= 10) {
+            if (totalItem - lastVisibleItem <= TO_THE_END_OF_THE_LIST) {
                this@SearchFragment.presenter.nextPage()
             }
          }
@@ -116,7 +120,7 @@ class SearchFragment : MvpAppCompatFragment(), ISearchMvpView {
          } else {
             SearchAnimator.LIST.pos
          }
-      this.adapter?.data(newData, clear)
+      this.adapter?.addData(newData, clear)
    }
 
    override fun showLoad() {

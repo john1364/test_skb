@@ -16,7 +16,7 @@ internal class SearchAdapter(private val click: (pos: Int) -> Unit) : RecyclerVi
    private val items = mutableListOf<RepoModel>()
 
    @SuppressLint("NotifyDataSetChanged")
-   fun data(newData: List<RepoModel>, clear: Boolean) {
+   fun addData(newData: List<RepoModel>, clear: Boolean) {
       if (clear) {
          this.items.clear()
       }
