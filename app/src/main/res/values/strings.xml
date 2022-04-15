@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Test</string>
+    <string name="tab_search">Поиск</string>
+    <string name="tab_saved">Сохраненное</string>
+    <string name="login">Логин</string>
+    <string name="token">Токен</string>
+    <string name="continueWithoutRegistration">Продолжить без авторизации</string>
+    <string name="signIn">Войти</string>
+    <string name="generateToken">Нажмите сюда для генерации нового токена</string>
+    <string name="search">Поиск</string>
+    <string name="exit">Выход</string>
+    <string name="saved_empty">Здесь пока ничего нет</string>
+    <string name="clearSaved">Очистить сохраненное</string>
 </resources>

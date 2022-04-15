@@ -1,0 +1,22 @@
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        disableEmptyStrategyCheck: 'true',
+                        enableEmptyStrategyHelper: 'true',
+                        defaultMoxyStrategy: 'moxy.viewstate.strategy.AddToEndSingleStrategy'
+                ]
+            }
+        }
+    }
+}
+
+dependencies {
+    def moxyVersion = "2.2.2"
+    implementation "com.github.moxy-community:moxy:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-material:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-ktx:$moxyVersion"
+    kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
+}
